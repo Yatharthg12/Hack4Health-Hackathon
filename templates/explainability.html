@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Explainability Lab · MindFuse XAI{% endblock %}
+{% block content %}
+<section class="page-head compact"><div><span class="kicker">Explainability lab</span><h1>Trace every signal.</h1><p>Faithful evidence from model internals and controlled sensitivity—not generated rationales.</p></div></section>
+<div class="explain-grid">
+  <section class="panel wide"><div class="panel-heading"><div><span class="kicker">Numerical branch</span><h2>Global feature importance</h2></div><span class="tag">Permutation macro-F1 decrease</span></div><div id="importance-bars" class="importance-bars loading-block">Loading measured artifacts…</div></section>
+  <section class="panel"><span class="kicker">Facial branch</span><h2>Which regions changed the score</h2><p>The selected small-data model uses predicted-class occlusion sensitivity. When the full-data CNN is active, the same UI uses Grad-CAM from its last residual convolution. Warm regions influenced that model's prediction most.</p><div class="visual-placeholder"><span>◉</span><strong>Generated per assessment</strong><small>Upload a face to view its model-tied heatmap.</small></div></section>
+  <section class="panel"><span class="kicker">Speech branch</span><h2>What changed the emotion score</h2><p>The waveform, log-Mel representation, and absolute input gradient expose time–frequency regions most sensitive for the chosen emotion.</p><div class="visual-placeholder"><span>≋</span><strong>Generated per assessment</strong><small>No template saliency is substituted.</small></div></section>
+  <section class="panel wide fusion-explainer"><span class="kicker">Fusion branch</span><h2>A transparent decision-level pool</h2><div class="formula"><span>w<sub>m</sub> ∝</span><strong>validation reliability</strong><span>×</span><strong>(0.5 + 0.5 · confidence<sub>m</sub>)</strong></div><p>Confidence is one minus normalized entropy. Available weights are re-normalized when a modality is missing; the fused vector is the weighted linear opinion pool. Agreement uses one minus pairwise total-variation distance.</p><div id="fusion-weight-list" class="chip-list"></div></section>
+  <section class="panel responsible-panel"><span class="kicker">Interpretation guardrails</span><h2>Confidence is not certainty.</h2><ul><li>High confidence can still be wrong under distribution shift.</li><li>Grad-CAM indicates model attention, not clinical causality.</li><li>Local numerical influence is one-feature-at-a-time sensitivity against training medians.</li><li>Conflicting modalities are surfaced, never hidden.</li></ul></section>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/explainability.js') }}" defer></script>{% endblock %}

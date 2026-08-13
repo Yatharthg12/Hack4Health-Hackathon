@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+!.env.example
+
+# Organizer data and derived feature cache (recreate with documented commands)
+data/raw/*
+!data/raw/.gitkeep
+data/cache/
+*.part
+
+# Runtime state
+instance/uploads/*
+!instance/uploads/.gitkeep
+*.log
+
+# Editors and operating systems
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+

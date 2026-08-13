@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Model Performance · MindFuse XAI{% endblock %}
+{% block content %}
+<section class="page-head compact"><div><span class="kicker">Model performance</span><h1>Measured. Reproducible. Visible.</h1><p>Every value below is loaded from generated held-out evaluation artifacts. Missing results remain unavailable.</p></div></section>
+<div id="performance-status" class="notice">Loading evaluation artifacts…</div>
+<section id="classification-performance" class="performance-sections"></section>
+<section class="panel" id="regression-performance"><div class="panel-heading"><div><span class="kicker">Multi-output regression</span><h2>D/A/S score estimation</h2></div></div><div id="regression-table"></div></section>
+<section class="panel"><div class="panel-heading"><div><span class="kicker">Model selection</span><h2>Numerical candidates</h2></div></div><div class="comparison-grid"><div id="classifier-comparison"></div><div id="regressor-comparison"></div></div></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/performance.js') }}" defer></script>{% endblock %}
+

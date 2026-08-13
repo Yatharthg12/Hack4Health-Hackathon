@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Batch Assessment · MindFuse XAI{% endblock %}
+{% block content %}
+<section class="page-head compact"><div><span class="kicker">Batch assessment</span><h1>Process numerical profiles safely.</h1><p>Upload up to 10,000 rows using the exact 18-feature schema. The original file is never retained.</p></div></section>
+<section class="panel batch-panel">
+  <label class="dropzone" id="batch-dropzone" for="batch-input"><input id="batch-input" type="file" accept="text/csv,.csv"><span class="drop-icon">⇄</span><strong>Choose or drop a CSV</strong><small id="batch-meta">Predictions, probabilities, and clamped D/A/S estimates will be appended.</small></label>
+  <button class="button primary" id="run-batch" disabled>Run batch assessment</button>
+  <div id="batch-status" class="notice" hidden></div>
+  <details><summary>Required column order</summary><code>{{ numerical_features | join(', ') }}</code></details>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/batch.js') }}" defer></script>{% endblock %}
+

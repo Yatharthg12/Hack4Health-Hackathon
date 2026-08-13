@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MindFuse XAI — explainable multimodal mental-health decision support">
+  <title>{% block title %}MindFuse XAI{% endblock %}</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='assets/favicon.svg') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to content</a>
+  <aside class="sidebar" aria-label="Primary navigation">
+    <a class="brand" href="{{ url_for('overview') }}" aria-label="MindFuse XAI home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span><strong>MindFuse</strong><small>XAI</small></span>
+    </a>
+    <nav>
+      <a class="nav-item {{ 'active' if page == 'overview' }}" href="{{ url_for('overview') }}"><span>◫</span>Command Center</a>
+      <a class="nav-item {{ 'active' if page == 'assessment' }}" href="{{ url_for('assessment') }}"><span>✦</span>Assessment</a>
+      <a class="nav-item {{ 'active' if page == 'explainability' }}" href="{{ url_for('explainability') }}"><span>◎</span>Explainability Lab</a>
+      <a class="nav-item {{ 'active' if page == 'performance' }}" href="{{ url_for('performance') }}"><span>↗</span>Model Performance</a>
+      <a class="nav-item {{ 'active' if page == 'methodology' }}" href="{{ url_for('methodology') }}"><span>≡</span>Data & Method</a>
+      <a class="nav-item {{ 'active' if page == 'batch' }}" href="{{ url_for('batch') }}"><span>⇄</span>Batch Assessment</a>
+    </nav>
+    <div class="sidebar-foot">
+      <span class="status-dot" id="sidebar-status"></span>
+      <span><small>System status</small><strong id="sidebar-status-text">Checking…</strong></span>
+    </div>
+  </aside>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="icon-button mobile-menu" id="mobile-menu" aria-label="Toggle navigation">☰</button>
+      <div class="topbar-context"><span class="eyebrow">Explainable multimodal intelligence</span></div>
+      <div class="topbar-actions">
+        <span class="research-badge">Research system · Non-diagnostic</span>
+        <button class="icon-button" id="theme-toggle" aria-label="Toggle appearance">◐</button>
+      </div>
+    </header>
+    <main id="content" class="main-content">{% block content %}{% endblock %}</main>
+    <footer>MindFuse XAI is an experimental decision-support system and does not replace qualified clinical assessment.</footer>
+  </div>
+  <div id="toast-region" class="toast-region" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='js/app.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

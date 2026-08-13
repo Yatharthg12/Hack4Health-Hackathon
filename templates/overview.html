@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Command Center · MindFuse XAI{% endblock %}
+{% block content %}
+<section class="page-head compact">
+  <div><span class="kicker">Command center</span><h1>Evidence, not a black box.</h1><p>Independent modality models, calibrated at decision level for responsible mental-health assessment support.</p></div>
+  <a class="button primary" href="{{ url_for('assessment') }}">Start assessment <span>→</span></a>
+</section>
+<section class="metric-strip" id="summary-metrics" aria-label="Evaluation summary">
+  <article><span>Face macro-F1</span><strong data-metric="face">—</strong><small>held-out test</small></article>
+  <article><span>Speech macro-F1</span><strong data-metric="audio">—</strong><small>actor-disjoint test</small></article>
+  <article><span>Numerical macro-F1</span><strong data-metric="numerical">—</strong><small>held-out test</small></article>
+  <article><span>Mean D/A/S RMSE</span><strong data-metric="regression">—</strong><small>raw test estimates</small></article>
+</section>
+<div class="overview-grid">
+  <section class="panel architecture-panel">
+    <div class="panel-heading"><div><span class="kicker">Decision architecture</span><h2>Confidence-aware late fusion</h2></div><span class="tag">Scientifically unpaired training data</span></div>
+    <div class="architecture-flow">
+      <article class="modality-node"><span class="node-icon face">◉</span><div><strong>Facial affect</strong><small>Audited small-data HOG + CNN benchmark</small></div><b id="face-model-state">…</b></article>
+      <article class="modality-node"><span class="node-icon audio">≋</span><div><strong>Speech emotion</strong><small>Log-Mel residual CNN</small></div><b id="audio-model-state">…</b></article>
+      <article class="modality-node"><span class="node-icon numerical">⌁</span><div><strong>Behavior + physiology</strong><small>Selected tabular ensemble</small></div><b id="numerical-model-state">…</b></article>
+      <div class="flow-rail"><i></i><span>calibrated probability vectors</span><i></i></div>
+      <article class="fusion-node"><span class="brand-mark"><i></i><i></i><i></i></span><div><strong>Entropy-aware fusion</strong><small>Reliability × sample confidence · missing modalities supported</small></div></article>
+    </div>
+  </section>
+  <section class="panel data-panel">
+    <div class="panel-heading"><div><span class="kicker">Verified inputs</span><h2>Dataset audit</h2></div><a href="{{ url_for('methodology') }}">Inspect method →</a></div>
+    <div class="dataset-counts">
+      <article><strong id="face-count">—</strong><span>facial images</span><small>7 expressions</small></article>
+      <article><strong id="audio-count">—</strong><span>speech clips</span><small>8 emotions · 24 actors</small></article>
+      <article><strong id="numerical-count">—</strong><span>numerical profiles</span><small>18 predictors · 4 targets</small></article>
+    </div>
+    <div class="integrity-note"><span>✓</span><p><strong>No invented pairing.</strong> Face, voice, and numerical datasets train independently. Inputs are fused only when they belong to the same live assessment session.</p></div>
+  </section>
+</div>
+<section class="panel objective-grid">
+  <header><span class="kicker">Challenge alignment</span><h2>Three objectives. One coherent system.</h2></header>
+  <article><span>01</span><h3>Stress classification</h3><p>Four-category decision support from any available subset of face, speech, and numerical evidence.</p></article>
+  <article><span>02</span><h3>Severity estimation</h3><p>Depression, Anxiety, and Stress scores from the only branch carrying validated regression labels.</p></article>
+  <article><span>03</span><h3>Explainable evidence</h3><p>Grad-CAM, audio saliency, local numerical sensitivity, and explicit modality contributions.</p></article>
+</section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/overview.js') }}" defer></script>{% endblock %}

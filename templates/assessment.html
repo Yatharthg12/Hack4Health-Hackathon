@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Assessment · MindFuse XAI{% endblock %}
+{% block content %}
+<section class="page-head compact">
+  <div><span class="kicker">Multimodal assessment</span><h1>Assemble the evidence.</h1><p>Use one, two, or all three modalities. Every result retains its own uncertainty.</p></div>
+  <div class="head-actions"><button class="button ghost" id="reset-assessment">Reset</button><button class="button primary" id="run-assessment">Run multimodal assessment <span>→</span></button></div>
+</section>
+<div class="assessment-grid">
+  <section class="input-card" id="face-card">
+    <header><span class="step">01</span><div><h2>Face</h2><p>Expression evidence</p></div><span class="modality-state" id="face-state">Optional</span></header>
+    <label class="dropzone" id="face-dropzone" for="face-input">
+      <input id="face-input" type="file" accept="image/png,image/jpeg">
+      <img id="face-preview" alt="Selected face preview" hidden>
+      <span class="drop-icon">◉</span><strong>Drop a face image</strong><small>PNG or JPEG · clear, front-facing crop</small>
+    </label>
+    <button class="button secondary full" id="analyze-face" disabled>Analyze facial evidence</button>
+    <div class="inline-result" id="face-result" hidden></div>
+  </section>
+  <section class="input-card" id="audio-card">
+    <header><span class="step">02</span><div><h2>Voice</h2><p>Acoustic emotion evidence</p></div><span class="modality-state" id="audio-state">Optional</span></header>
+    <label class="dropzone" id="audio-dropzone" for="audio-input">
+      <input id="audio-input" type="file" accept="audio/wav,.wav">
+      <span class="drop-icon">≋</span><strong>Drop a WAV recording</strong><small id="audio-file-meta">Mono/stereo WAV · speech content</small>
+    </label>
+    <button class="button secondary full" id="analyze-audio" disabled>Analyze voice evidence</button>
+    <p class="inline-error" id="audio-error" role="alert" hidden></p>
+    <div class="inline-result" id="audio-result" hidden></div>
+  </section>
+  <section class="input-card numerical-card" id="numerical-card">
+    <header><span class="step">03</span><div><h2>Behavior + physiology</h2><p>18 validated numerical indicators</p></div><span class="modality-state" id="numerical-state">Optional</span></header>
+    <div class="profile-toolbar" aria-label="Example numerical profiles">
+      <span>Example profiles</span>
+      <div class="profile-actions">
+        <button type="button" class="profile-chip good" data-profile="good">Good</button>
+        <button type="button" class="profile-chip typical" data-profile="typical">Typical</button>
+        <button type="button" class="profile-chip high-strain" data-profile="high_strain">High strain</button>
+        <button type="button" class="text-button" id="clear-form">Clear</button>
+      </div>
+    </div>
+    <p class="profile-caption">Representative demonstration inputs derived from organizer training data. <span id="profile-loaded" aria-live="polite"></span></p>
+    <form id="numerical-form" class="feature-form" novalidate>
+      {% for feature in numerical_features %}
+      {% set meta = feature_metadata[feature] %}
+      <label><span>{{ feature.replace('_', ' ') }} <button type="button" class="tooltip" data-tip="{{ meta.description }}" aria-label="{{ meta.description }}">?</button></span><span class="input-with-unit"><input name="{{ feature }}" type="number" min="{{ meta.min }}" max="{{ meta.max }}" step="{{ meta.step }}" placeholder="{{ meta.min }}–{{ meta.max }}" required><small>{{ meta.unit }}</small></span></label>
+      {% endfor %}
+    </form>
+    <button class="button secondary full" id="analyze-numerical">Analyze numerical evidence</button>
+    <div class="inline-result" id="numerical-result" hidden></div>
+  </section>
+</div>
+<section class="fusion-result panel" id="fusion-result" hidden aria-live="polite">
+  <div class="result-hero">
+    <div><span class="kicker">Model-estimated stress category</span><h2 id="final-class">—</h2><p id="final-summary">—</p></div>
+    <div class="confidence-ring" id="confidence-ring"><strong id="final-confidence">—</strong><small>confidence</small></div>
+  </div>
+  <div class="result-grid">
+    <article><h3>Fused probability</h3><div id="fusion-probabilities" class="probability-list"></div></article>
+    <article><h3>Modality contribution</h3><div id="fusion-contributions" class="contribution-list"></div></article>
+    <article><h3>Decision quality</h3><div id="quality-metrics" class="quality-list"></div></article>
+  </div>
+  <div id="score-results" class="score-grid"></div>
+  <div id="evidence-results" class="evidence-grid"></div>
+  <div class="result-actions"><button class="button ghost" id="download-json">Download JSON</button><button class="button secondary" id="print-report">Generate detailed PDF report</button></div>
+  <p class="responsible-note"><strong>Responsible use:</strong> Experimental decision support only. This output is not a diagnosis and does not replace evaluation by a qualified mental-health professional.</p>
+</section>
+<section class="clinical-report" id="clinical-report" aria-label="Printable clinical decision-support report" aria-hidden="true"></section>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/assessment.js') }}" defer></script>{% endblock %}
