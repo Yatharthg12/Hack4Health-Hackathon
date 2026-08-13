@@ -1,0 +1,194 @@
+{
+  "model": "hist_gradient_boosting",
+  "model_selection": {
+    "logistic_regression": {
+      "macro_f1": 0.20095414964366579,
+      "balanced_accuracy": 0.26438997038984846
+    },
+    "random_forest": {
+      "macro_f1": 0.19997788199635463,
+      "balanced_accuracy": 0.23938812639866078
+    },
+    "extra_trees": {
+      "macro_f1": 0.21384161374073332,
+      "balanced_accuracy": 0.2477219412740494
+    },
+    "hist_gradient_boosting": {
+      "macro_f1": 0.23536324004074596,
+      "balanced_accuracy": 0.23835507276830065
+    }
+  },
+  "selection_partition": "validation",
+  "test_metrics": {
+    "accuracy": 0.38166666666666665,
+    "balanced_accuracy": 0.281917920718916,
+    "macro_precision": 0.27472194050033805,
+    "macro_recall": 0.281917920718916,
+    "macro_f1": 0.27787653067991347,
+    "weighted_f1": 0.37424732950087264,
+    "confusion_matrix": [
+      [
+        120,
+        73,
+        50,
+        1
+      ],
+      [
+        78,
+        69,
+        39,
+        0
+      ],
+      [
+        58,
+        51,
+        40,
+        2
+      ],
+      [
+        5,
+        7,
+        7,
+        0
+      ]
+    ],
+    "per_class": {
+      "Healthy": {
+        "precision": 0.45977011494252873,
+        "recall": 0.4918032786885246,
+        "f1-score": 0.4752475247524752,
+        "support": 244.0
+      },
+      "Mild_Stress": {
+        "precision": 0.345,
+        "recall": 0.3709677419354839,
+        "f1-score": 0.35751295336787564,
+        "support": 186.0
+      },
+      "Moderate_Stress": {
+        "precision": 0.29411764705882354,
+        "recall": 0.26490066225165565,
+        "f1-score": 0.2787456445993031,
+        "support": 151.0
+      },
+      "Severe_Stress": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 19.0
+      }
+    },
+    "support": 600,
+    "roc_auc_macro_ovr": 0.49554661291527446
+  },
+  "global_feature_importance": [
+    {
+      "feature": "Skin_Temperature",
+      "importance": 0.025775109913019255,
+      "std": 0.01019169043381481
+    },
+    {
+      "feature": "Typing_Speed_WPM",
+      "importance": 0.021145715353725416,
+      "std": 0.009917843653097627
+    },
+    {
+      "feature": "MFCC_Variance",
+      "importance": 0.020792728929876304,
+      "std": 0.00760026893824425
+    },
+    {
+      "feature": "Facial_Emotion_Variance",
+      "importance": 0.019603902130146567,
+      "std": 0.004991792453209784
+    },
+    {
+      "feature": "Head_Motion_Index",
+      "importance": 0.018148042733639118,
+      "std": 0.005619424099343876
+    },
+    {
+      "feature": "MFCC_Mean",
+      "importance": 0.015123082017142978,
+      "std": 0.00559246027385599
+    },
+    {
+      "feature": "Smile_Intensity",
+      "importance": 0.012775522577264858,
+      "std": 0.0065624798662675555
+    },
+    {
+      "feature": "Daily_App_Usage_Min",
+      "importance": 0.011758284095457969,
+      "std": 0.005751056052920684
+    },
+    {
+      "feature": "Heart_Rate_BPM",
+      "importance": 0.009465359819169301,
+      "std": 0.0074669114049024975
+    },
+    {
+      "feature": "HRV_Index",
+      "importance": 0.005549594413173119,
+      "std": 0.005015886416587169
+    },
+    {
+      "feature": "Social_Engagement",
+      "importance": 0.005383982124525011,
+      "std": 0.006435432632479585
+    },
+    {
+      "feature": "GSR_Level",
+      "importance": 0.003881737806425728,
+      "std": 0.00970977848165103
+    },
+    {
+      "feature": "Idle_Time_Min",
+      "importance": 0.003767110038575626,
+      "std": 0.0042429349873372105
+    },
+    {
+      "feature": "Pitch_Mean",
+      "importance": 0.0034325013396229315,
+      "std": 0.009683641571600015
+    },
+    {
+      "feature": "Session_Frequency",
+      "importance": 0.0021695957230324497,
+      "std": 0.0058932696826825386
+    },
+    {
+      "feature": "Eye_Blink_Rate",
+      "importance": 0.00206662632658583,
+      "std": 0.006812860411643101
+    },
+    {
+      "feature": "Speech_Rate",
+      "importance": -0.001971546845144348,
+      "std": 0.009077580130806452
+    },
+    {
+      "feature": "Sleep_Quality",
+      "importance": -0.0024520181266702024,
+      "std": 0.002368807664381869
+    }
+  ],
+  "split": {
+    "train": 2800,
+    "validation": 600,
+    "test": 600
+  },
+  "class_distribution": {
+    "Healthy": 1629,
+    "Mild_Stress": 1237,
+    "Moderate_Stress": 1006,
+    "Severe_Stress": 128
+  },
+  "probability_calibration": {
+    "method": "scalar temperature scaling fitted on validation probabilities",
+    "temperature": 2.8618870554731375,
+    "decision_preserving": true
+  },
+  "trained_at": "2026-08-13T04:03:42.370575+00:00",
+  "seed": 42
+}

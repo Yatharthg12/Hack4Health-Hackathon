@@ -1,0 +1,63 @@
+{
+  "model": "ridge",
+  "model_selection": {
+    "ridge": {
+      "mean_normalized_rmse": 0.29376631587501323,
+      "mean_rmse": 9.50947247429204
+    },
+    "random_forest": {
+      "mean_normalized_rmse": 0.2957931419347,
+      "mean_rmse": 9.582963421093764
+    },
+    "extra_trees": {
+      "mean_normalized_rmse": 0.2945447761055155,
+      "mean_rmse": 9.54067015462092
+    },
+    "hist_gradient_boosting": {
+      "mean_normalized_rmse": 0.31189486846828784,
+      "mean_rmse": 10.093931689594449
+    }
+  },
+  "selection_partition": "validation",
+  "test_metrics": {
+    "per_target": {
+      "Depression_Score": {
+        "mae": 8.553382020129032,
+        "mse": 98.32952713909656,
+        "rmse": 9.91612460284241,
+        "r2": 0.0033804792947161877,
+        "explained_variance": 0.0034381149498379227
+      },
+      "Anxiety_Score": {
+        "mae": 6.202315568239502,
+        "mse": 52.343257080506035,
+        "rmse": 7.234863998756717,
+        "r2": -0.01290584137419537,
+        "explained_variance": -0.005638772350314181
+      },
+      "Stress_Score": {
+        "mae": 9.567777487926575,
+        "mse": 124.26292994593716,
+        "rmse": 11.147328377056862,
+        "r2": -0.012739741254089498,
+        "explained_variance": -0.012578221257452338
+      }
+    },
+    "aggregate": {
+      "mae": 8.107825025431703,
+      "mse": 91.64523805517992,
+      "rmse": 9.432772326218663,
+      "r2": -0.00742170111118956,
+      "explained_variance": -0.004926292885976198
+    },
+    "support": 600
+  },
+  "split": {
+    "train": 2800,
+    "validation": 600,
+    "test": 600
+  },
+  "clamping": "Predictions are evaluated raw; documented bounds are applied only at inference presentation.",
+  "trained_at": "2026-08-13T04:03:47.381386+00:00",
+  "seed": 42
+}

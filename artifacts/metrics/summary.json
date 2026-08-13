@@ -1,0 +1,21 @@
+{
+  "trained_at": "2026-08-13T04:07:14.545343+00:00",
+  "seed": 42,
+  "dataset": {
+    "face": 350,
+    "audio": 1200,
+    "numerical": 4000
+  },
+  "metrics": {
+    "face_macro_f1": 0.2972552583786551,
+    "audio_macro_f1": 0.4231982058191189,
+    "numerical_macro_f1": 0.27787653067991347,
+    "regression_mean_rmse": 9.432772326218663
+  },
+  "fusion_weights": {
+    "face": 0.28216286514605843,
+    "audio": 0.5025303498180965,
+    "numerical": 0.23536324004074596
+  },
+  "last_updated_at": "2026-08-13T06:03:03.112295+00:00"
+}

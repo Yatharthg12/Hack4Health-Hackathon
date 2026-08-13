@@ -1,0 +1,11 @@
+{
+  "weights": {
+    "face": 0.28216286514605843,
+    "audio": 0.5025303498180965,
+    "numerical": 0.23536324004074596
+  },
+  "basis": "modality-specific held-out validation macro-F1 before test evaluation",
+  "normalization": "Weights are re-normalized per request after entropy confidence adjustment",
+  "generated_at": "2026-08-13T06:03:03.112295+00:00",
+  "last_updated_by": "scripts/train_face.py"
+}

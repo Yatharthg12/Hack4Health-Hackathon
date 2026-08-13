@@ -1,0 +1,20 @@
+{
+  "Sleep_Quality": 3.0,
+  "Social_Engagement": 3.0,
+  "Daily_App_Usage_Min": 246.0,
+  "Typing_Speed_WPM": 53.0,
+  "Session_Frequency": 10.0,
+  "Idle_Time_Min": 91.0,
+  "Facial_Emotion_Variance": 0.56,
+  "Eye_Blink_Rate": 22.0,
+  "Smile_Intensity": 0.51,
+  "Head_Motion_Index": 0.49,
+  "MFCC_Mean": -0.39,
+  "MFCC_Variance": 15.45,
+  "Pitch_Mean": 192.0,
+  "Speech_Rate": 4.01,
+  "Heart_Rate_BPM": 87.0,
+  "HRV_Index": 55.8,
+  "Skin_Temperature": 34.5,
+  "GSR_Level": 2.52
+}
