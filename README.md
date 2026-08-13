@@ -328,6 +328,10 @@ The browser print dialog provides **Save as PDF**. No medical diagnosis, patient
 
 ## Dataset integrity
 
+**Dataset Download:** https://drive.google.com/drive/folders/1R9ka23jnBsNDyPh6l03f2Zv3d7gyk3tR
+
+Download Dataset and place inside data/raw/
+
 Discovery is content/schema-driven rather than dependent on assumed folder names.
 
 | Component | Observed organizer data | Integrity handling |
@@ -676,3 +680,7 @@ Copyright © 2026 MindFuse XAI contributors.
 ---
 
 <p align="center"><strong>MindFuse XAI</strong><br>Transparent multimodal evidence, calibrated uncertainty, and responsible human review.</p>
+
+## Author
+
+Yatharth Garg & Yogesh Mehta
